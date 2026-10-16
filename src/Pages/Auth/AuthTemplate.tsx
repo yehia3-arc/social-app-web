@@ -29,10 +29,12 @@ type Mode = "login" | "register";
 function InputShell({
   icon,
   error,
+  trailing,
   children,
 }: {
   icon: ReactElement;
   error?: string;
+  trailing?: ReactElement;
   children: ReactElement;
 }) {
   return (
@@ -42,6 +44,7 @@ function InputShell({
           {icon}
         </span>
         {children}
+        {trailing}
       </div>
       {error && <p className="mt-1 text-xs font-bold text-red-500">{error}</p>}
     </div>
@@ -98,12 +101,15 @@ export default function AuthTemplate({
     axios
       .post(`https://route-posts.routemisr.com/users/signin`, values)
       .then((res) => {
-        if (res.data.success) {
-          localStorage.setItem("userToken", res.data.data.token);
-          setuserLogin(res.data.data.token);
-          toast.success(res.data.message ?? "welcome back");
-          navigate("/");
+        const token = res.data?.data?.token ?? res.data?.token; // tolerate both shapes
+        if (!token) {
+          setApiError(res.data?.message ?? "login failed: no token returned");
+          return;
         }
+        localStorage.setItem("userToken", token);
+        setuserLogin(token);
+        toast.success(res.data?.message ?? "welcome back");
+        navigate("/", { replace: true });
       })
       .catch((err) =>
         setApiError(err.response?.data?.message ?? "login failed"),
@@ -117,18 +123,16 @@ export default function AuthTemplate({
     axios
       .post(`https://route-posts.routemisr.com/users/signup`, values)
       .then((res) => {
-        if (res.data.success) {
-          toast.success(res.data.message ?? "account created");
-          registerForm.reset();
-          switchTo("login"); // slide back to login WITHOUT refresh
-        }
+        // axios only reaches .then on 2xx → signup really succeeded
+        toast.success(res.data?.message ?? "account created");
+        registerForm.reset();
+        switchTo("login"); // pure state change → login panel appears, NO refresh
       })
       .catch((err) =>
         setApiError(err.response?.data?.message ?? "register failed"),
       )
       .finally(() => setIsLoading(false));
   }
-
   const pillCls = (active: boolean) =>
     `flex-1 rounded-full p-2.5 text-sm font-bold cursor-pointer transition-all ${
       active
@@ -196,6 +200,15 @@ export default function AuthTemplate({
             <InputShell
               icon={<FaLock />}
               error={loginForm.formState.errors.password?.message}
+              trailing={
+                <button
+                  type="button"
+                  onClick={() => setShowLoginPass((p) => !p)}
+                  className="absolute top-[50%] end-3 translate-y-[-50%] text-slate-500 dark:text-slate-300 cursor-pointer"
+                >
+                  {showLoginPass ? <FaRegEyeSlash /> : <FaRegEye />}
+                </button>
+              }
             >
               <input
                 {...loginForm.register("password")}
@@ -204,13 +217,7 @@ export default function AuthTemplate({
                 className={inputCls}
               />
             </InputShell>
-            <button
-              type="button"
-              onClick={() => setShowLoginPass((p) => !p)}
-              className="relative -mt-10 ms-auto me-3 text-slate-500 dark:text-slate-300 cursor-pointer h-6"
-            >
-              {showLoginPass ? <FaRegEyeSlash /> : <FaRegEye />}
-            </button>
+
             <button
               disabled={isLoading}
               type="submit"
@@ -270,6 +277,15 @@ export default function AuthTemplate({
             <InputShell
               icon={<FaLock />}
               error={registerForm.formState.errors.password?.message}
+              trailing={
+                <button
+                  type="button"
+                  onClick={() => setShowRegPass((p) => !p)}
+                  className="absolute top-[50%] inset-e-3 translate-y-[-50%] text-slate-500 dark:text-slate-300 cursor-pointer"
+                >
+                  {showRegPass ? <FaRegEyeSlash /> : <FaRegEye />}
+                </button>
+              }
             >
               <input
                 {...registerForm.register("password")}
@@ -278,16 +294,18 @@ export default function AuthTemplate({
                 className={inputCls}
               />
             </InputShell>
-            <button
-              type="button"
-              onClick={() => setShowRegPass((p) => !p)}
-              className="relative -mt-10 ms-auto me-3 text-slate-500 dark:text-slate-300 cursor-pointer h-6"
-            >
-              {showRegPass ? <FaRegEyeSlash /> : <FaRegEye />}
-            </button>
             <InputShell
               icon={<FaLock />}
               error={registerForm.formState.errors.rePassword?.message}
+              trailing={
+                <button
+                  type="button"
+                  onClick={() => setShowRegRe((p) => !p)}
+                  className="absolute top-[50%] inset-e-3 translate-y-[-50%] text-slate-500 dark:text-slate-300 cursor-pointer"
+                >
+                  {showRegRe ? <FaRegEyeSlash /> : <FaRegEye />}
+                </button>
+              }
             >
               <input
                 {...registerForm.register("rePassword")}
@@ -296,13 +314,6 @@ export default function AuthTemplate({
                 className={inputCls}
               />
             </InputShell>
-            <button
-              type="button"
-              onClick={() => setShowRegRe((p) => !p)}
-              className="relative -mt-10 ms-auto me-3 text-slate-500 dark:text-slate-300 cursor-pointer h-6"
-            >
-              {showRegRe ? <FaRegEyeSlash /> : <FaRegEye />}
-            </button>
             <div className="flex gap-3">
               {(["male", "female"] as const).map((g) => (
                 <label
