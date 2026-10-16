@@ -2,9 +2,9 @@
 ![React](https://img.shields.io/badge/React-19-61dafb.svg)
 ![Tailwind](https://img.shields.io/badge/Tailwind-v4-38bdf8.svg)
 
-# Your Project Name
+# Social-app-web
 
-Your description here...
+this website have real data with posts and comments with choose language for what you suitable and see who folow you like other social app
 
 ---
 
