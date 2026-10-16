@@ -8,10 +8,14 @@ import toast from "react-hot-toast";
 
 export default function PostCreation() {
   const [isUploaded, setisUploaded] = useState(""); // preview only (blob URL)
-  const textInput = useRef<HTMLInputElement>(null);
+  const textInput = useRef<HTMLTextAreaElement>(null);
   const imgInput = useRef<HTMLInputElement>(null);
   const query = useQueryClient();
-
+  // ✅ add under the refs
+  function autoGrow(el: HTMLTextAreaElement) {
+    el.style.height = "auto"; // reset first so it can also SHRINK when you delete
+    el.style.height = el.scrollHeight + "px"; // then grow to fit the text
+  }
   function createPost(formData: FormData) {
     return axios.post(`https://route-posts.routemisr.com/posts`, formData, {
       headers: {
@@ -70,12 +74,13 @@ export default function PostCreation() {
         <form onSubmit={handleCreatePost} className="flex flex-col gap-4">
           {/* 1️⃣ text */}
           <div className="relative">
-            <FaPen className="absolute top-[50%] start-3 translate-y-[-50%] text-slate-400" />
-            <input
+            <FaPen className="absolute top-[50%] inset-s-3 translate-y-[-50%] text-slate-400" />
+            <textarea
               ref={textInput}
-              type="text"
+              rows={1}
+              onInput={(e) => autoGrow(e.currentTarget)}
               placeholder="What's on your mind?"
-              className="block w-full rounded-lg border border-slate-300 p-3 ps-9 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              className="block w-full rounded-lg border border-slate-300 p-3 ps-9 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none overflow-y-auto max-h-40 wrap-break-word"
             />
           </div>
 

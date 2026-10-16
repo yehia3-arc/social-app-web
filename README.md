@@ -1,3 +1,30 @@
+![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)
+![React](https://img.shields.io/badge/React-19-61dafb.svg)
+![Tailwind](https://img.shields.io/badge/Tailwind-v4-38bdf8.svg)
+
+# Your Project Name
+
+Your description here...
+
+---
+
+## 📄 License
+
+**Copyright (c) 2026 Yehia Mohamed — All rights reserved.**
+
+This project is shared for course-review / portfolio purposes only.
+
+Copying, redistribution or reuse without written permission is prohibited.
+
+---
+
+## 👨‍💻 Author
+
+**Yehia Mohamed**
+
+- GitHub: [@yehia3-arc](https://github.com/yehia3-arc)
+- Live Demo: [your-vercel-url.vercel.app](https://social-app-web-yehia-blush.vercel.app)
+
 # Social App (React + TS + Tailwind + React Query)
 
 Frontend built 100% by me: yehia mohamed — Route Academy project.
