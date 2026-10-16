@@ -23,7 +23,7 @@ Copying, redistribution or reuse without written permission is prohibited.
 **Yehia Mohamed**
 
 - GitHub: [@yehia3-arc](https://github.com/yehia3-arc)
-- Live Demo: [your-vercel-url.vercel.app](https://social-app-web-yehia-blush.vercel.app)
+- Live Demo: [https://social-app-web-yehia-blush.vercel.app](https://social-app-web-yehia-blush.vercel.app)
 
 # Social App (React + TS + Tailwind + React Query)
 
