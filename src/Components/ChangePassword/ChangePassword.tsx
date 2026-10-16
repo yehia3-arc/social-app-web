@@ -57,7 +57,7 @@ export default function ChangePassword() {
         <button
           type="button"
           onClick={() => setShowPassword((prev) => !prev)}
-          className="absolute top-[50%] end-2 translate-y-[-50%] text-lg text-gray-600 cursor-pointer"
+          className="absolute top-[50%] inset-e-2 translate-y-[-50%] text-lg text-gray-600 cursor-pointer"
         >
           {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
         </button>
@@ -75,7 +75,7 @@ export default function ChangePassword() {
         <button
           type="button"
           onClick={() => setShowNewPassword((prev) => !prev)}
-          className="absolute top-[50%] end-2 translate-y-[-50%] text-lg text-gray-600 cursor-pointer"
+          className="absolute top-[50%] inset-e-2 translate-y-[-50%] text-lg text-gray-600 cursor-pointer"
         >
           {showNewPassword ? <FaRegEyeSlash /> : <FaRegEye />}
         </button>

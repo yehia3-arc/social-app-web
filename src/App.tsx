@@ -12,12 +12,12 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import PostDetails from "./Pages/PostDetails/PostDetails";
 import toast, { Toaster } from "react-hot-toast";
-import { useNetworkState, useBattery } from "react-use"; // ✅ 1. Added useBattery back
-import { useEffect } from "react"; // ✅ 2. Added useEffect
+import { useNetworkState, useBattery } from "react-use";
+import { useEffect } from "react";
 import Offline from "./Components/Offline/Offline";
 import UserProfile from "./Pages/UserProfile/UserProfile";
 import Bookmarks from "./Pages/Bookmarks/Bookmarks";
-import Guide from "./Pages/Guide/Guide"; // ✅ NEW
+import Guide from "./Pages/Guide/Guide";
 import { ThemeContextProvider } from "./Context/ThemeContext";
 import { LanguageContextProvider } from "./Context/LanguageContext";
 const query = new QueryClient();

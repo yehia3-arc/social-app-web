@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import Login from "../../Pages/Login/Login";
 
 export default function ProtectedRoute({

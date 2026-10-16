@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 export default function Comment({
   comment,
   postId,
-  allComments = [],
+
   onRepliesCount,
   postOwnerId,
 }: {
@@ -65,7 +65,6 @@ export default function Comment({
     );
   }
 
-  /* ---------- ✅ NEW: UPDATE = PUT /posts/:postId/comments/:commentId (form-data: content + image) ---------- */
   function handleUpdateComment(text: string) {
     const formData = new FormData();
     if (text) formData.append("content", text);
@@ -298,8 +297,6 @@ export default function Comment({
           </div>
         </div>
         <div className="flex gap-2 items-center">
-          {/* ✅ FIX: others' comments → always replyable.
-    My own comment → replyable ONLY if someone replied to me (so I can answer back) */}
           {(!isOwner || replies.length > 0) && (
             <button
               onClick={() => {
@@ -315,7 +312,7 @@ export default function Comment({
               <FaReply />
             </button>
           )}
-          {/* owner only: edit + delete */}
+
           {/* ✅ edit = comment author only */}
           {isOwner && (
             <button
@@ -329,7 +326,7 @@ export default function Comment({
               <FaPen />
             </button>
           )}
-          {/* ✅ delete = comment author OR the post owner (moderation, like Facebook) */}
+
           {(isOwner || isPostOwner) && (
             <button
               disabled={isPending}
@@ -352,7 +349,7 @@ export default function Comment({
         <>
           <p
             ref={textRef}
-            className={`px-4 break-words whitespace-pre-wrap ${
+            className={`px-4 wrap-break-word whitespace-pre-wrap ${
               expanded ? "" : "line-clamp-3"
             }`}
           >

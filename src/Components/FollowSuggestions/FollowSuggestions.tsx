@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { RiUserFollowFill } from "react-icons/ri";
 
 export default function FollowSuggestions() {
   const query = useQueryClient();
@@ -68,7 +67,7 @@ export default function FollowSuggestions() {
           return (
             <div
               key={u._id}
-              className="min-w-[150px] max-w-[150px] bg-slate-50 p-3 rounded-xl flex flex-col items-center text-center gap-2 border border-slate-200 shrink-0"
+              className="min-w-37.5 max-w-37.5 bg-slate-50 p-3 rounded-xl flex flex-col items-center text-center gap-2 border border-slate-200 shrink-0"
             >
               <Link to={`/user/${u._id}`} className="block">
                 <img

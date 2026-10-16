@@ -9,7 +9,7 @@ import Post from "../../Components/Post/Post";
 import type { PostType } from "../../Types/Post.type";
 import { AuthContext } from "../../Context/AuthContext";
 import { RiUserFollowFill } from "react-icons/ri";
-import WhoLists from "../../Components/WhoLists/WhoLists"; // ✅ NEW
+import WhoLists from "../../Components/WhoLists/WhoLists";
 export default function UserProfile() {
   const { userId } = useParams();
   const { userId: loginUserId } = useContext(AuthContext);
@@ -18,7 +18,6 @@ export default function UserProfile() {
   // ✅ local follow state (null = not decided yet → use server value)
   const [followed, setFollowed] = useState<boolean | null>(null);
 
-  // reset when moving to another user's page
   useEffect(() => {
     setFollowed(null);
   }, [userId]);

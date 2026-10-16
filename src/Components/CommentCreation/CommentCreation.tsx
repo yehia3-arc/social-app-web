@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { FaComment } from "react-icons/fa";
 import { FaImage } from "react-icons/fa6";
@@ -25,8 +24,7 @@ export default function CommentCreation({
   const { register, handleSubmit, reset } = form;
   //const formdata = new FormData();
 
-  function autoGrow(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    const el = e.target;
+  function autoGrow(el: HTMLTextAreaElement) {
     el.style.height = "auto"; // reset first so it can also SHRINK when you delete
     el.style.height = el.scrollHeight + "px"; // then grow to fit the text
   }
@@ -42,14 +40,12 @@ export default function CommentCreation({
       },
     );
   }
-  const { data, isPending, mutate } = useMutation({
+  const { isPending, mutate } = useMutation({
     mutationFn: createComment,
     onSuccess: (res) => {
       //console.log("comment created");
       toast.success(res.data.message);
 
-      // ✅ FIX 3: Invalidate ALL affected caches so the comment count (commentsCount)
-      // and topComment update INSTANTLY everywhere without needing a page refresh!
       query.invalidateQueries({ queryKey: queryKey }); // The one passed from Post.tsx
       query.invalidateQueries({ queryKey: ["getAllPosts"] });
       query.invalidateQueries({ queryKey: ["getSinglePost", postId] });
@@ -90,8 +86,8 @@ export default function CommentCreation({
               {...register("content")}
               id="commentBox"
               rows={1}
-              onInput={autoGrow}
-              className="flex-1 w-full resize-none overflow-y-auto max-h-40 p-2 text-sm outline-none bg-transparent break-words [overflow-wrap:anywhere]"
+              onInput={(e) => autoGrow(e.currentTarget)}
+              className="flex-1 w-full resize-none overflow-y-auto max-h-40 p-2 text-sm outline-none bg-transparent wrap-break-word"
               placeholder="Write a comment..."
             />
             <button
