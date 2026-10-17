@@ -9,15 +9,17 @@ export default function Layout() {
   const { pathname } = useLocation();
   const isAuthPage = AUTH_PATHS.some((p) => pathname.startsWith(p));
 
-  /* ===== LOGIN / REGISTER: viewport-height layout, footer always visible ===== */
+  /* ===== LOGIN / REGISTER ===== */
   if (isAuthPage) {
     return (
-      <div className="relative flex flex-col h-dvh overflow-hidden">
+      /* mobile: normal page height + normal scroll (footer at the end)
+         desktop (md+): fixed viewport height, footer always visible */
+      <div className="relative flex flex-col min-h-dvh md:h-dvh md:overflow-hidden">
         <ScrollRestoration />
         <Background />
         <Navbar />
-        {/* only this area scrolls if the form is taller than the screen */}
-        <main className="relative z-10 w-full flex-1 min-h-0 overflow-y-auto">
+        {/* mobile: grows naturally • desktop: the only scrollable area */}
+        <main className="relative z-10 w-full flex-1 md:min-h-0 md:overflow-y-auto">
           <Outlet />
         </main>
         <Footer variant="auth" />
@@ -25,7 +27,7 @@ export default function Layout() {
     );
   }
 
-  /* ===== ALL OTHER PAGES: exactly as before (untouched) ===== */
+  /* ===== ALL OTHER PAGES: exactly as before ===== */
   return (
     <div className="relative flex flex-col min-h-screen">
       <ScrollRestoration />
