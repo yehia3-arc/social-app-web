@@ -140,7 +140,9 @@ export default function Footer({
             <button
               onClick={backToTop}
               aria-label="back to top"
-              className="size-9 rounded-full bg-slate-800 hover:bg-indigo-600 flex items-center justify-center cursor-pointer transition-colors"
+              className={`size-9 rounded-full bg-slate-800 hover:bg-indigo-600 flex items-center justify-center cursor-pointer transition-colors ${
+    isAuth ? "md:hidden" : ""
+  }`}
             >
               <FaArrowUp />
             </button>
