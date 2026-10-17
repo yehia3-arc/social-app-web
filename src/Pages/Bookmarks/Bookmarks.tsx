@@ -36,7 +36,7 @@ export default function Bookmarks() {
     <>
       <title>Bookmarks</title>
       <div className="my-8 px-4 md:px-0 flex items-center justify-center flex-col">
-        <h1 className="text-2xl font-bold flex items-center gap-2 mb-2">
+        <h1 className="text-2xl font-bold flex items-center gap-2 mb-2 dark:text-white">
           <FaBookmark /> My Bookmarks
         </h1>
         {posts.length === 0 ? (
