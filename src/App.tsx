@@ -118,7 +118,7 @@ function App() {
   }, [battery]);
 
   useEffect(() => {
-    if (!import.meta.env.PROD) return; // ✅ YOU: `npm run dev` = inspect freely
+    if (!import.meta.env.PROD) return;
     const blockKeys = (e: KeyboardEvent) => {
       const k = e.key.toUpperCase();
       if (
