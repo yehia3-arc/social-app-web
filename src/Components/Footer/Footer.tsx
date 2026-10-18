@@ -30,15 +30,55 @@ export default function Footer({
       ? translated
       : "You can change the language here — even before login or register.";
 
+  /* shared language select (used by BOTH variants) */
+  const langSelect = (
+    <select
+      value={lang}
+      onChange={(e) => setLang(e.target.value as Lang)}
+      className="rounded-lg bg-slate-800 border border-slate-700 p-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
+    >
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="es">Español</option>
+      <option value="zh">中文</option>
+      <option value="ru">Русский</option>
+      <option value="de">Deutsch</option>
+      <option value="ja">日本語</option>
+    </select>
+  );
+
+  if (isAuth) {
+    return (
+      <footer className="shrink-0 bg-slate-900 dark:bg-slate-950 text-slate-300">
+        <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col md:flex-row md:items-center justify-between gap-2 text-sm text-slate-400">
+          <p className="md:hidden text-xs">🌐 {hint}</p>
+          <p>
+            © {new Date().getFullYear()} Logo — {t("rights")} • Made by{" "}
+            <span className="text-indigo-400 font-bold">Yehia Mohamed</span>
+          </p>
+          <div className="flex items-center gap-3">
+            <label className="flex items-center gap-2">
+              {t("language")}
+              {langSelect}
+            </label>
+            <button
+              onClick={toggleTheme}
+              className="w-fit flex items-center gap-2 hover:text-indigo-400 cursor-pointer transition-colors"
+            >
+              {theme === "dark" ? <FaSun /> : <FaMoon />}
+              {theme === "dark" ? "Light" : "Dark"}
+            </button>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="mt-auto shrink-0 bg-slate-900 dark:bg-slate-950 text-slate-300">
-      <div
-        className={`w-full max-w-5xl mx-auto px-4 grid gap-8 md:grid-cols-3 ${
-          isAuth ? "py-4 md:py-10" : "py-10"
-        }`}
-      >
-        {/* brand + socials — hidden on mobile in auth pages */}
-        <div className={isAuth ? "hidden md:block" : ""}>
+      <div className="w-full max-w-5xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-3">
+        {/* brand + socials */}
+        <div>
           <p className="text-2xl font-extrabold text-indigo-400 mb-2">Logo</p>
           <p className="text-sm text-slate-400 leading-relaxed">
             {t("footerTagline")}
@@ -59,8 +99,8 @@ export default function Footer({
           </div>
         </div>
 
-        {/* quick links — hidden on mobile in auth pages */}
-        <nav className={isAuth ? "hidden md:block" : ""}>
+        {/* quick links */}
+        <nav>
           <h3 className="font-bold text-white mb-3">{t("quickLinks")}</h3>
           <ul className="flex flex-col gap-2 text-sm">
             <li>
@@ -98,36 +138,13 @@ export default function Footer({
           </ul>
         </nav>
 
-        {/* preferences: language + theme (always visible, even on mobile) */}
+        {/* settings: language + theme */}
         <div>
-          {isAuth && (
-            <p className="md:hidden mb-3 flex items-center gap-2 text-xs text-slate-400">
-              🌐 {hint}
-            </p>
-          )}
           <h3 className="font-bold text-white mb-3">{t("settings")}</h3>
-          <div
-            className={`flex gap-3 text-sm ${
-              isAuth
-                ? "flex-row flex-wrap items-center md:flex-col"
-                : "flex-col"
-            }`}
-          >
+          <div className="flex flex-col gap-3 text-sm">
             <label className="flex items-center gap-2">
               {t("language")}
-              <select
-                value={lang}
-                onChange={(e) => setLang(e.target.value as Lang)}
-                className="rounded-lg bg-slate-800 border border-slate-700 p-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500"
-              >
-                <option value="en">English</option>
-                <option value="ar">العربية</option>
-                <option value="es">Español</option>
-                <option value="zh">中文</option>
-                <option value="ru">Русский</option>
-                <option value="de">Deutsch</option>
-                <option value="ja">日本語</option>
-              </select>
+              {langSelect}
             </label>
             <button
               onClick={toggleTheme}
@@ -147,18 +164,13 @@ export default function Footer({
             © {new Date().getFullYear()} Logo — {t("rights")} • Made by{" "}
             <span className="text-indigo-400 font-bold">Yehia Mohamed</span>
           </p>
-          {/* back-to-top is useless when the page itself doesn't scroll */}
-          {!isAuth && (
-            <button
-              onClick={backToTop}
-              aria-label="back to top"
-              className={`size-9 rounded-full bg-slate-800 hover:bg-indigo-600 flex items-center justify-center cursor-pointer transition-colors ${
-                isAuth ? "md:hidden" : ""
-              }`}
-            >
-              <FaArrowUp />
-            </button>
-          )}
+          <button
+            onClick={backToTop}
+            aria-label="back to top"
+            className="size-9 rounded-full bg-slate-800 hover:bg-indigo-600 flex items-center justify-center cursor-pointer transition-colors"
+          >
+            <FaArrowUp />
+          </button>
         </div>
       </div>
     </footer>

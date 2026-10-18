@@ -148,7 +148,7 @@ export default function AuthTemplate({
   );
 
   return (
-    <div className="flex items-center justify-center px-4 py-10 md:min-h-full">
+    <div className="flex items-center justify-center px-4 py-6 md:py-8 md:min-h-full">
       {/* card: grid KEPT + relative so the image layer can slide over it */}
       <div className="relative w-full max-w-5xl grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-slate-800">
         {/*  mobile-only header + pill (row 1 on mobile, hidden on md)  */}
