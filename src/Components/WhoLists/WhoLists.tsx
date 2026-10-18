@@ -177,7 +177,7 @@ export default function WhoLists({
   }
 
   return (
-    <div className="w-full  mx-auto bg-indigo-100 rounded-xl shadow-sm p-4 my-4">
+    <div className="w-[60%]  mx-auto bg-indigo-100 rounded-xl shadow-sm p-4 my-4">
       {/* ---------- tabs ---------- */}
       <div className="flex flex-wrap gap-2 border-b border-slate-200 pb-3 mb-3">
         <button
