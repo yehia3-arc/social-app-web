@@ -30,7 +30,6 @@ const translations: Record<Lang, Record<string, string>> = {
       "Share posts, comment, follow friends and bookmark what you love — all in one place.",
     rights: "All rights reserved.",
 
-    // ===== GUIDE TRANSLATIONS =====
     "guide.0.title": "Create a post",
     "guide.0.step.0": "Go to Home and write in “What's on your mind?”.",
     "guide.0.step.1": "Optionally attach one image using the Upload Image box.",
@@ -136,7 +135,6 @@ const translations: Record<Lang, Record<string, string>> = {
       "شارك المنشورات، علّق، تابع أصدقاءك واحفظ ما تحب — في مكان واحد.",
     rights: "جميع الحقوق محفوظة.",
 
-    // ===== GUIDE TRANSLATIONS =====
     "guide.0.title": "إنشاء منشور",
     "guide.0.step.0": "اذهب إلى الرئيسية واكتب في «بمَ تفكر؟».",
     "guide.0.step.1": "اختياريًا أرفق صورة واحدة باستخدام مربع رفع الصورة.",
@@ -236,7 +234,6 @@ const translations: Record<Lang, Record<string, string>> = {
       "Comparte, comenta, sigue amigos y guarda lo que te gusta en un solo lugar.",
     rights: "Todos los derechos reservados.",
 
-    // ===== GUIDE TRANSLATIONS =====
     "guide.0.title": "Crear una publicación",
     "guide.0.step.0": "Ve a Inicio y escribe en «¿Qué estás pensando?».",
     "guide.0.step.1":
@@ -345,7 +342,6 @@ const translations: Record<Lang, Record<string, string>> = {
     footerTagline: "在一个地方分享帖子、评论、关注朋友并收藏所爱。",
     rights: "版权所有。",
 
-    // ===== GUIDE TRANSLATIONS =====
     "guide.0.title": "创建帖子",
     "guide.0.step.0": "前往首页，在「你在想什么？」中输入内容。",
     "guide.0.step.1": "可选择使用上传图片框附加一张图片。",
@@ -432,7 +428,6 @@ const translations: Record<Lang, Record<string, string>> = {
     footerTagline: "Посты, комментарии, друзья и закладки — в одном месте.",
     rights: "Все права защищены.",
 
-    // ===== GUIDE TRANSLATIONS =====
     "guide.0.title": "Создать пост",
     "guide.0.step.0": "Перейдите на Главную и напишите в «Что у вас на уме?».",
     "guide.0.step.1":
@@ -542,7 +537,6 @@ const translations: Record<Lang, Record<string, string>> = {
       "Teilen, kommentieren, folgen und speichern — alles an einem Ort.",
     rights: "Alle Rechte vorbehalten.",
 
-    // ===== GUIDE TRANSLATIONS =====
     "guide.0.title": "Einen Beitrag erstellen",
     "guide.0.step.0":
       "Gehe zu Startseite und schreibe in „Was denkst du gerade?“.",
@@ -651,7 +645,6 @@ const translations: Record<Lang, Record<string, string>> = {
     footerTagline: "投稿・コメント・フォロー・ブックマークをひとつの場所で。",
     rights: "無断転載禁止。",
 
-    // ===== GUIDE TRANSLATIONS =====
     "guide.0.title": "投稿を作成",
     "guide.0.step.0": "ホームに移動し、「今何を考えていますか？」に書きます。",
     "guide.0.step.1":

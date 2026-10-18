@@ -117,6 +117,26 @@ function App() {
     }
   }, [battery]);
 
+  useEffect(() => {
+    if (!import.meta.env.PROD) return; // ✅ YOU: `npm run dev` = inspect freely
+    const blockKeys = (e: KeyboardEvent) => {
+      const k = e.key.toUpperCase();
+      if (
+        k === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(k)) ||
+        (e.ctrlKey && k === "U")
+      )
+        e.preventDefault();
+    };
+    const blockMenu = (e: MouseEvent) => e.preventDefault(); // right-click (delete this line + listener if you don't want it)
+    window.addEventListener("keydown", blockKeys);
+    window.addEventListener("contextmenu", blockMenu);
+    return () => {
+      window.removeEventListener("keydown", blockKeys);
+      window.removeEventListener("contextmenu", blockMenu);
+    };
+  }, []);
+
   return (
     <>
       {!online && <Offline />}

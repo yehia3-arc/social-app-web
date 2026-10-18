@@ -40,7 +40,7 @@ function InputShell({
   return (
     <div>
       <div className="relative">
-        <span className="absolute top-[50%] start-3 translate-y-[-50%] text-slate-400">
+        <span className="absolute top-[50%] inset-s-3 translate-y-[-50%] text-slate-400">
           {icon}
         </span>
         {children}
@@ -151,7 +151,7 @@ export default function AuthTemplate({
     <div className="flex items-center justify-center px-4 py-10 md:min-h-full">
       {/* card: grid KEPT + relative so the image layer can slide over it */}
       <div className="relative w-full max-w-5xl grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-slate-800">
-        {/* ===== mobile-only header + pill (row 1 on mobile, hidden on md) ===== */}
+        {/*  mobile-only header + pill (row 1 on mobile, hidden on md)  */}
         <div className="md:hidden p-8 pb-0">
           <p className="text-2xl font-extrabold text-indigo-600 dark:text-indigo-400 mb-4">
             Logo
@@ -172,7 +172,6 @@ export default function AuthTemplate({
           </div>
         </div>
 
-        {/* ===== LOGIN panel — column 2 on md, ALWAYS mounted ===== */}
         <div
           className={`p-8 md:p-10 md:order-2 md:flex md:flex-col md:justify-center ${
             mode === "login" ? "block" : "hidden"
@@ -204,7 +203,7 @@ export default function AuthTemplate({
                 <button
                   type="button"
                   onClick={() => setShowLoginPass((p) => !p)}
-                  className="absolute top-[50%] end-3 translate-y-[-50%] text-slate-500 dark:text-slate-300 cursor-pointer"
+                  className="absolute top-[50%] inset-e-3 translate-y-[-50%] text-slate-500 dark:text-slate-300 cursor-pointer"
                 >
                   {showLoginPass ? <FaRegEyeSlash /> : <FaRegEye />}
                 </button>
@@ -228,7 +227,6 @@ export default function AuthTemplate({
           </form>
         </div>
 
-        {/* ===== REGISTER panel — column 1 on md, ALWAYS mounted ===== */}
         <div
           className={`p-8 md:p-10 md:order-1 ${
             mode === "register" ? "block" : "hidden"
@@ -350,7 +348,6 @@ export default function AuthTemplate({
           </form>
         </div>
 
-        {/* ===== mobile-only bottom switch link ===== */}
         <p className="md:hidden px-8 pb-8 text-center text-sm text-slate-600 dark:text-slate-300">
           {mode === "login"
             ? "Don't have an account? "
@@ -363,9 +360,8 @@ export default function AuthTemplate({
           </button>
         </p>
 
-        {/* ===== SLIDING IMAGE LAYER (the only moving element) ===== */}
         <div
-          className={`hidden md:block absolute inset-y-0 start-0 w-1/2 z-10 overflow-hidden transition-transform duration-700 ease-in-out ${
+          className={`hidden md:block absolute inset-y-0 inset-s-0 w-1/2 z-10 overflow-hidden transition-transform duration-700 ease-in-out ${
             mode === "register"
               ? "md:translate-x-full md:rtl:-translate-x-full"
               : ""

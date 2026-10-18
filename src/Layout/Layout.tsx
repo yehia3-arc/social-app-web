@@ -9,7 +9,6 @@ export default function Layout() {
   const { pathname } = useLocation();
   const isAuthPage = AUTH_PATHS.some((p) => pathname.startsWith(p));
 
-  /* ===== LOGIN / REGISTER ===== */
   if (isAuthPage) {
     return (
       /* mobile: normal page height + normal scroll (footer at the end)
@@ -27,7 +26,6 @@ export default function Layout() {
     );
   }
 
-  /* ===== ALL OTHER PAGES: exactly as before ===== */
   return (
     <div className="relative flex flex-col min-h-screen">
       <ScrollRestoration />

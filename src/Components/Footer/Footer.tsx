@@ -64,22 +64,34 @@ export default function Footer({
           <h3 className="font-bold text-white mb-3">{t("quickLinks")}</h3>
           <ul className="flex flex-col gap-2 text-sm">
             <li>
-              <Link className="hover:text-indigo-400 transition-colors" to="/home">
+              <Link
+                className="hover:text-indigo-400 transition-colors"
+                to="/home"
+              >
                 {t("home")}
               </Link>
             </li>
             <li>
-              <Link className="hover:text-indigo-400 transition-colors" to="/guide">
+              <Link
+                className="hover:text-indigo-400 transition-colors"
+                to="/guide"
+              >
                 {t("guide")}
               </Link>
             </li>
             <li>
-              <Link className="hover:text-indigo-400 transition-colors" to="/bookmarks">
+              <Link
+                className="hover:text-indigo-400 transition-colors"
+                to="/bookmarks"
+              >
                 {t("bookmarks")}
               </Link>
             </li>
             <li>
-              <Link className="hover:text-indigo-400 transition-colors" to="/profile">
+              <Link
+                className="hover:text-indigo-400 transition-colors"
+                to="/profile"
+              >
                 {t("profile")}
               </Link>
             </li>
@@ -141,8 +153,8 @@ export default function Footer({
               onClick={backToTop}
               aria-label="back to top"
               className={`size-9 rounded-full bg-slate-800 hover:bg-indigo-600 flex items-center justify-center cursor-pointer transition-colors ${
-    isAuth ? "md:hidden" : ""
-  }`}
+                isAuth ? "md:hidden" : ""
+              }`}
             >
               <FaArrowUp />
             </button>
